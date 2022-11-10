@@ -1,19 +1,19 @@
 # TODO: Too inefficient
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        if len(s) <= 1: return s
+        result = ""
+        for i in range(len(s)):
+            l = i if len(s) % 2 != 0 else i - 1
+            r = i
 
-        current = ''
-        for i in range(len(s), 0, -1):
-            current = s[:i]
+            while (l > 0 and r < len(s)):
+                if (l != r): 
+                    if (r - l > len(result)):
+                        result = s[l:r+1]
+                l-=1; r+=1
 
-            if current == current[::-1]:
-                break;
+        return result
 
-        if(len(current) >= len(s)): return current;
-
-        next = self.longestPalindrome(s[1:])
-        return current if len(current) > len(next) else next
 
 sol = Solution()
-print(sol.longestPalindrome("cbbd"))
+print(sol.longestPalindrome("aa"))
