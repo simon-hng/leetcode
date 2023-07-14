@@ -2,7 +2,7 @@
 #include <unordered_map>
 
 class Solution {
-public:
+ public:
   int lengthOfLongestSubstring(std::string s) {
     if (s.length() == 0) {
       return 0;
