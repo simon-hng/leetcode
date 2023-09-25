@@ -17,37 +17,36 @@ struct ListsIter {
 }
 
 impl Iterator for ListsIter {
-    type Item = Option<Box<ListNode>>;
+    type Item = Box<ListNode>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let (iter_index, next) =
-            self.lists
-                .iter()
-                .flatten()
-                .enumerate()
-                .reduce(|acc, e| match e.1.val > acc.1.val {
-                    true => return acc,
-                    false => return e,
-                })?;
+        let (iter_index, next) = self
+            .lists
+            .iter()
+            .enumerate()
+            .filter_map(|(index, value_option)| value_option.as_ref().map(|value| (index, value)))
+            .reduce(|acc, e| match e.1.val > acc.1.val {
+                true => return acc,
+                false => return e,
+            })?;
+
         let next = next.to_owned();
-
         self.lists[iter_index] = self.lists[iter_index].clone().map(|e| e.next)?;
-
-        Some(Some(next.to_owned()))
+        Some(next)
     }
 }
 
 impl ListsIter {
     fn merge(&mut self) -> Option<Box<ListNode>> {
-        let mut dummy_head = Some(Box::new(ListNode::new(0)));
+        let mut dummy_head = Box::new(ListNode::new(0));
         let mut tail = &mut dummy_head;
 
-        while let Some(next_node) = self.next() {
-            tail.unwrap().next = next_node;
-            tail = &mut tail.unwrap().next
+        for next_node in self {
+            tail.next = Some(next_node);
+            tail = tail.next.as_mut().unwrap();
         }
 
-        dummy_head.unwrap().next
+        dummy_head.next
     }
 }
 
@@ -79,5 +78,5 @@ fn main() {
         lists: vec![list1, list2, list3],
     };
 
-    lists_iter.flatten().for_each(|e| print!("{}", e.val))
+    lists_iter.for_each(|e| println!("{:?}", e))
 }
