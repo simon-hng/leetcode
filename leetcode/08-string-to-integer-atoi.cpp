@@ -1,6 +1,6 @@
-#include <climits>;
-#include <iostream>;
-#include <string>;
+#include <climits>
+#include <iostream>
+#include <string>
 
 class Solution {
  public:

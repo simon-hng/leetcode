@@ -1,5 +1,6 @@
 import math
 
+
 class Solution:
     def reverse(self, x: int) -> int:
         result = 0
@@ -12,7 +13,7 @@ class Solution:
             x = -x
             signed = True
 
-        while(x > 0):
+        while (x > 0):
             result *= 10
             result += x % 10
             x = x // 10
@@ -22,6 +23,6 @@ class Solution:
 
         return result if not signed else -result
 
+
 sol = Solution()
 print(sol.reverse(123))
-

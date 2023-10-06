@@ -18,5 +18,4 @@ int myAtoi(char *s) {
     tmp++;
   }
   *tmp = 0;
-
 }
