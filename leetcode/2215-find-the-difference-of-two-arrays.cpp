@@ -1,6 +1,3 @@
-#include <algorithm>
-#include <iterator>
-
 #include "../include/bits/stdc++.h"
 
 class Solution {
