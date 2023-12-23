@@ -7,6 +7,7 @@ class Solution {
     int cheapest_stock = *std::max_element(prices.begin(), prices.end());
     int result = 0;
 
+    // Two-pointer solution
     for (int price : prices) {
       cheapest_stock = std::min(cheapest_stock, price);
       result = std::max(price - cheapest_stock, result);
@@ -15,3 +16,5 @@ class Solution {
     return result;
   }
 };
+
+int main() {}

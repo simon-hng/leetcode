@@ -8,3 +8,5 @@ class Solution {
     return str1.substr(0, std::gcd(str1.length(), str2.length()));
   }
 };
+
+int main() {}

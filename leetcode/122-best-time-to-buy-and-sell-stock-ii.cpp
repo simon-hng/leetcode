@@ -10,3 +10,5 @@ class Solution {
     return profit;
   }
 };
+
+int main() {}
