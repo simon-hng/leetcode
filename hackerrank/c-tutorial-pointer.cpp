@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <cmath>
+#include "../include/bits/stdc++.h"
 
 void update(int *a, int *b) {
   int sum = *a + *b;
