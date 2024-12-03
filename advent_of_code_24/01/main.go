@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	data, err := os.ReadFile("./data/01.txt")
+	data, err := os.ReadFile("./01.txt")
 	if err != nil {
 		fmt.Println("Error reading file:", err)
 		return
@@ -71,4 +71,3 @@ func main() {
 
 	fmt.Println("Part 2:", result2)
 }
-
