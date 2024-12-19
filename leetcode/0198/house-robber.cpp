@@ -1,6 +1,5 @@
 #include <optional>
-
-#include "../include/bits/stdc++.h"
+#include <vector>
 
 class Solution {
  public:
